@@ -1,26 +1,28 @@
 
 package com.mecanicossa.posvenda.service;
 
-import com.macanicossa.posvenda.repository.ComentarioRepository;
 import com.mecanicossa.posvenda.model.Comentario;
-import com.mecanicossa.posvenda.model.Servico;
+import com.mecanicossa.posvenda.repository.ComentarioRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class ComentarioService {
+    
     
     @Autowired
     ComentarioRepository comentarioRepository;
     
     
-      public Comentario criar(Comentario comen) {
-        comen.setId(0);
-        comentarioRepository.save(comen);
-        return comen;
+    public Comentario criar(Comentario com){
+        com.setId(null);
+        comentarioRepository.save(com);
+        return com;
     }
     
-    public List<Comentario> listaTodos(Integer idServico){
+    
+    public List<Comentario> listar(Integer idServico){
         return comentarioRepository.findByServicoId(idServico);
     }
     
@@ -30,12 +32,13 @@ public class ComentarioService {
     }
     
     
-    public void excluir (Integer id){
+    public void excluir(Integer id){
         Comentario comentarioEncontrado = buscarPorId(id);
         comentarioRepository.deleteById(comentarioEncontrado.getId());
     }
     
-    public Comentario atualizar (Integer id, Comentario comentarioEnviado){
+    
+    public Comentario atualizar(Integer id, Comentario comentarioEnviado){
         Comentario comentarioEncontrado = buscarPorId(id);
         comentarioEncontrado.setNomeCliente(comentarioEnviado.getNomeCliente());
         comentarioEncontrado.setCarro(comentarioEnviado.getCarro());
