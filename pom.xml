@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>posvenda</name>
 	<description>Projeto sistema Pós Venda para oficina mecânica </description>
+        <packaging>war</packaging>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -52,6 +53,7 @@
 	</dependencies>
 
 	<build>
+            <finalName>${artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
