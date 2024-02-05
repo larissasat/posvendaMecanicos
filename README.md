@@ -5,9 +5,9 @@ Empresa: Mecânicos SA
 
 Título do projeto: Pós-Venda Mecânicos SA.
 
-Status do projeto: em desenvolvimento 
+Status do projeto: FINALIZADO PARA PUBLICAÇÃO  
 
-Detalhes do Desenvolvimento: Projeto inicial carregado com todas as todas as funcionalidades porém sem conexão ainda com o banco de dados. 
+Detalhes do Desenvolvimento: Projeto concluido, todas as operações funcionando e persistência de dados via JPA em banco MySql.  
 
 Tecnologias aplicadas: HTML5 (HTML, JavaScript, CSS3) e JavaWeb com os frameworks BootStramp, JQuery e SpringBoot, 
 
