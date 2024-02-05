@@ -4,6 +4,7 @@ package com.mecanicossa.posvenda.controller;
 import com.mecanicossa.posvenda.model.Servico;
 import com.mecanicossa.posvenda.service.ServicoService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,10 +50,16 @@ public class ServicoAPIController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
-    @PutMapping ("/atualizar/{id}")
-    public ResponseEntity<Servico> atualizarServico(@PathVariable Integer id, @RequestBody Servico serv){
-        var servicoEditado = servicoService.atualizar(id, serv);
-        return new ResponseEntity<>(servicoEditado, HttpStatus.OK);
+     
+     @PutMapping("/{id}")
+    public ResponseEntity<Servico> atualizarServico(@PathVariable Integer id, @RequestBody Servico serv) {
+        serv.setId(id);
+        
+        Optional<Servico> servicoAtualizadoOptional = servicoService.atualizar(serv);
+
+        return servicoAtualizadoOptional
+                .map(servico -> new ResponseEntity<>(servico, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
-    
+     
 }

@@ -4,6 +4,7 @@ package com.mecanicossa.posvenda.service;
 import com.mecanicossa.posvenda.model.Servico;
 import com.mecanicossa.posvenda.repository.ServicoRepository;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,14 +36,21 @@ public class ServicoService {
         
     }
     
-    public Servico atualizar(Integer id, Servico servicoEnviado){
-        Servico servicoEncontrado = buscarPorId(id);
-        servicoEncontrado.setNomeServico(servicoEnviado.getNomeServico());
-        servicoEncontrado.setDetalhamento(servicoEnviado.getDetalhamento());
-        servicoRepository.save(servicoEncontrado);
-        return servicoEncontrado;
+    
+    public Optional<Servico> atualizar(Servico servico) {
+        Optional<Servico> servicoExistente = servicoRepository.findById(servico.getId());
+
+        if (servicoExistente.isPresent()) {
+            Servico servicoAtualizado = servicoExistente.get();
+            servicoAtualizado.setNomeServico(servico.getNomeServico());
+            servicoAtualizado.setDetalhamento(servico.getDetalhamento());
+           
+            servicoRepository.save(servicoAtualizado);
+
+            return Optional.of(servicoAtualizado);
+        } else {
+            return Optional.empty(); 
+        }
     }
-    
-    
     
 }

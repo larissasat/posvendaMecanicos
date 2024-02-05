@@ -77,7 +77,7 @@ public class PosvendaController {
     
     @PostMapping("atualizar")
     public String atualizarServico(@ModelAttribute Servico servico){
-        servicoService.atualizar(Integer.SIZE, servico);
+        servicoService.atualizar(servico);
         return "redirect:/listagem";
     }
     

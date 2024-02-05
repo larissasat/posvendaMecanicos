@@ -1,0 +1,54 @@
+<html xmlns="w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+    <head>
+        <title>Pós Venda Mecânicos SA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">    
+    </head>
+    <body>
+        <div class="topo">
+            <div class="row">
+                <div style="background-color: darkgray; text-align: center;" class="col-md-12">
+                    <br>
+                    <h1 style = "color: whitesmoke; align-content: center;">Mecânicos SA.</h1>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <div class = "container">
+            <div class="row">
+                <div style="background-color:gainsboro;" class="col-md-8">
+                    <br><br>
+                    <h4>Pós-Venda | Excluir Serviço</h4>
+                    <br><br>
+                    <form th:action="@{/excluir-servico}" th:object="${servico}" method="delete"> 
+                        <p>Insira o ID do serviço que deseja excluir:<input type="text" th:field="${servico.id}"/> </p> 
+                        <br>
+                        <p> <input type="submit" value="Excluir"/>
+                    </form> 
+                    <a th:href="@{/inicio}"><button type "button" class= "btn btn-dark">Voltar</button></a>
+                </div>
+                <div class="col-md-4">
+                    <div class="list-inline">
+                        <br><br>
+                        <h3 style = "color: darkred; text-align: center;">NOSSOS SERVIÇOS:</h3>
+                        <br>
+                        <h4 style = "color: darkgray; text-align: center;">Motor e Câmbio</h4>
+                        <br>
+                        <h4 style = "color: darkgray; text-align: center;">Suspensão e Pneus</h4>
+                        <br>
+                        <h4 style = "color: darkgray; text-align: center;">Elétrica e Tecnologia</h4>
+                        <br>
+                        <h4 style = "color: darkgray; text-align: center;">Estética para Autos</h4>
+                        <br><br>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+        <div class="footer" style="background-color: darkgray; text-align: center">
+            <p>Sistema de Pós-Venda Mecânicos SA.</p>           
+        </div>
+         
+    </body>
+</html>
